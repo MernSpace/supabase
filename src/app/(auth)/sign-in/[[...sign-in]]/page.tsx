@@ -1,9 +1,12 @@
-const Page = () => {
-    return (
-        <div>
-            Sign in view
-        </div>
-    )
-}
+import { LoginForm } from "@/modules/auth/ui/components/login-form";
+import { Suspense } from "react";
 
-export default Page
+
+export default function LoginPage() {
+    return (
+
+        <Suspense>
+            <LoginForm />;
+        </Suspense>
+    );
+}

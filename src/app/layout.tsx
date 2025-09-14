@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { TRPCReactProvider } from '@/trpc/client'
 import "./globals.css";
+import ProtectedRoute from "@/modules/auth/layout/layout";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,7 +26,9 @@ export default function RootLayout({
         <body
           className={`${inter.className} antialiased`}
         >
+
           {children}
+
         </body>
       </html>
     </TRPCReactProvider>
