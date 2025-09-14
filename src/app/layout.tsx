@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { TRPCReactProvider } from '@/trpc/client'
 import "./globals.css";
-import ProtectedRoute from "@/modules/auth/layout/layout";
 
 const inter = Inter({
   subsets: ["latin"],
