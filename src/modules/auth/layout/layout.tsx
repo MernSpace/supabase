@@ -3,12 +3,16 @@
 import { useAuth } from "@/hooks/use-auth";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { SidebarProvider } from "@/components/ui/sidebar"
+import { HomeNavbar } from "@/modules/home/ui/components/home-navbar";
+import { HomeSidebar } from "@/modules/home/ui/components/home-sidebar";
 
-interface ProtectedRouteProps {
-    children: React.ReactNode;
+
+interface HomeLayoutProps {
+    children: React.ReactNode
 }
 
-export default function ProtectedRoute({ children }: ProtectedRouteProps) {
+export const HomeLayout = ({ children }: HomeLayoutProps) => {
     const { user, loading } = useAuth();
     const router = useRouter();
 
@@ -29,6 +33,20 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
     if (!user) {
         return null;
     }
+    return (
+        <SidebarProvider>
+            <div className="w-full">
+                <HomeNavbar />
+                <div className="flex min-h-screen pt-[4rem]">
+                    <HomeSidebar />
+                    <main className="flex-1 overflow-y-auto">
+                        {children}
+                    </main>
+                </div>
 
-    return <>{children}</>;
+            </div>
+
+
+        </SidebarProvider>
+    )
 }
